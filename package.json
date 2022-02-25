@@ -1,0 +1,20 @@
+{
+  "name": "nft-metadata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zoralabs/nft-metadata": "^1.2.3",
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "json2csv": "^5.0.6",
+    "opensea-js": "^2.0.1",
+    "web3": "^1.7.0"
+  }
+}
