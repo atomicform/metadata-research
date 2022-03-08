@@ -1,3 +1,5 @@
+// This script shows a basic way to iterate through an already collected group of NFTs
+// and enrich them with the Zora parser
 // https://github.com/ourzora/nft-metadata
 import { Agent } from '@zoralabs/nft-metadata';
 import fs from 'fs';
@@ -9,7 +11,7 @@ const parsed = JSON.parse(dataset);
 let returnedData = [];
 
 const parser = new Agent({
-    // Use ethers.js Networkish here: numbers (1/4) or strings (homestead/rinkeby) work here
+    // Use ethers.js Network here: numbers (1/4) or strings (homestead/rinkeby) work here
     network: 'homestead',
     // Timeout: defaults to 40 seconds, recommended timeout is 60 seconds (in milliseconds)
     timeout: 60 * 1000,
@@ -17,14 +19,17 @@ const parser = new Agent({
 
   for (let i = 0; i < parsed.length; i++) {
     let asset = parsed[i];
-    parser.fetchMetadata(asset.tokenAddress, asset.tokenId).then((data) => {
+    try {
+      await parser.fetchMetadata(asset.tokenAddress, asset.tokenId).then((data) => {
+        const newMetadata = {};
+        newMetadata.length = data.metadata.length;
+        
         returnedData.push(data)
-    })
+      });
+    } catch (e) {
+      console.log('error', e)
+    }
+    console.log('asset #', i)
   }
 
-  fs.writeFileSync('./nftDatasets/zora.json',returnedData)
-  console.log(returnedData);
-  // Can use typical promises or async/await to get the return value of fetchMetadata
-// parser.fetchMetadata('0xb7F7F6C52F2e2fdb1963Eab30438024864c313F6', '23').then((data) => {
-//     console.log(data);
-// });
+fs.writeFileSync('./nftDatasets/zora.json', JSON.stringify(returnedData))
