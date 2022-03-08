@@ -1,17 +1,12 @@
-// Alchemy getNFT && getNFTMetadata
-
-// https://docs.alchemy.com/alchemy/enhanced-apis/nft-api
-// https://github.com/alchemyplatform/Build-Your-NFT-Explorer/blob/main/README.md
-// https://www.youtube.com/watch?v=YehktV6LSqw
-
 // https://dashboard.alchemyapi.io/apps
-// https://docs.alchemy.com/alchemy/guides/nft-api-quickstart-guide#javascript-fetch
 // https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/getnftmetadata
-// https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/getnftmetadata
+// Get NFT metadata and enrich it
+// This uses the Opensea data but could be easily refactored to pull 100% from Alchemy
 
 import 'dotenv/config';
 import axios from 'axios';
 import fs from 'fs';
+import {fileTypeFromBuffer} from 'file-type';
 
 const apiKey = process.env.ALCHEMY_KEY;
 const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
@@ -35,13 +30,21 @@ for (let i = 0; i < osParsed.length; i++) {
         asset.alchemy = response.data;
         const tokenURI = response.data.tokenUri.gateway;
         // Request the metadata if tokenURI is address, else set the on-chain value
-        if (tokenURI.includes('http')) {
-            asset.tokenURIData = await axios({ method: 'get', url: tokenURI }).then(response => response);
+        console.log('hiii', tokenURI)
+        // Handle base encoded tokenURI
+        if (tokenURI.includes('/json;utf8,')) {
+            let parsedTokenURI = response.data.tokenUri.raw.split('/json;utf8,').pop()
+            asset.tokenURIData = parsedTokenURI;
+        } else if (tokenURI.includes('http')) {
+            asset.tokenURIData = await axios({ method: 'get', url: tokenURI }).then(response => {
+                // console.log(response.data)
+                return response.data
+            });
         } else {
             asset.tokenURIData = tokenURI;
         }
         // Specify the storage type
-        if (tokenURI.includes('ipfs.io')) {
+        if (tokenURI.includes('ipfs')) {
             asset.storageType= 'IPFS';
         } else if (tokenURI.includes('amazonaws') || tokenURI.includes('cloudfront.net')) {
             asset.storageType = 'AWS'
@@ -67,9 +70,15 @@ for (let i = 0; i < osParsed.length; i++) {
         } else {
             return 'unmatched'
         }   
+
+        asset.mimeType = await axios.get(asset.alchemy.media[0].gateway, { responseType: 'arraybuffer' }).then(async (response) => {
+            const buffer = Buffer.from(response.data, 'binary');
+            const type = await fileTypeFromBuffer(buffer);
+            return type
+        });
     }).catch(error => console.log(error));
     console.log('hi', i)
 }
 
 
-fs.writeFileSync('./nftDatasets/enrichedMetadata.json', JSON.stringify(osParsed));
+fs.writeFileSync('./nftDatasets/alchemy-enriched.json',JSON.stringify(osParsed));
