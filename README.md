@@ -22,4 +22,14 @@ ALCHEMY_KEY=""
 This data isn't being persisted into a database until we have a better understanding of the data structure we'd like to persist, these scripts are currently writing the API results to the nftDatasets directory.
 
 ## Generating CSV
-This # metadata-research
+The metadata analysis was done primarily in spreadsheets. To that end, I had to convert the JSON payloads the API's were returning and converting them to CSV.
+
+To do this, I used [json2csv](https://github.com/zemirco/json2csv)'s CLI tool. To do this, you'll need to install it globally.
+`npm install -g json2csv`
+
+Then I executed the following from the command line
+`json2csv -i <path to input json file> -o <path to output csv file> --flatten-objects --include-empty-rows`
+
+Note that this will flatten all objects in the input JSON file and include empty rows, this can result in a very wide table.
+
+If you want to specify which fields to include in the output CSV, use the `--fields` option
