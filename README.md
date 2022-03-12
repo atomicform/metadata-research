@@ -10,6 +10,7 @@ By better understanding the current state, we can better support the NFT ecosyst
 There is a folder for each NFT metadata provider that has been tested so far
 - Alchemy
 - OpenSea
+- Solana
 - Zora
 
 OpenSea and Alchemy require API keys to be placed in a .env file with the following syntax
@@ -19,7 +20,17 @@ OPENSEA_KEY=""
 ALCHEMY_KEY=""
 ```
 
+Solana requires an API pair to be placed in a .env file with the following syntax
+
+```
+SOLANA_KEY_ID=""
+SOLANA_KEY_SECRET=""
+```
+
 This data isn't being persisted into a database until we have a better understanding of the data structure we'd like to persist, these scripts are currently writing the API results to the nftDatasets directory.
+
+### Solana Note
+Solana still needs a little work as the asset URI is not yet available. This is likely another call using the metaplex API. The metadata is currently being collected with `theblockchainapi`.
 
 ## Generating CSV
 The metadata analysis was done primarily in spreadsheets. To that end, I had to convert the JSON payloads the API's were returning and converting them to CSV.
