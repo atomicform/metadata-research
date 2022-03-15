@@ -15,7 +15,7 @@ APISecretKey.apiKey = process.env.SOLANA_KEY_SECRET;
 
 let apiInstance = new theblockchainapi.SolanaWalletApi();
 let network = 'mainnet-beta'; // String | The network ID (devnet, mainnet-beta)
-let publicKey = '8WRsGBaDcs1X7bHWr4Ad5Nx3bW29BkcmEbyavrLXDC4i'; // String | The public key of the account whose list of owned NFTs you want to get
+let publicKey = '8z6iPmQvw6m4pid2eeithBViJ6i2BvzKCoGf6vB4SGX6'; // String | The public key of the account whose list of owned NFTs you want to get
 
 const result = await apiInstance.solanaGetNFTsBelongingToWallet(network, publicKey).then((data) => {
   console.log('API called successfully.');
