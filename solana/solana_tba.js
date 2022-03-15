@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import theblockchainapi from 'theblockchainapi';
 import fs from "fs";
+import fetch from 'node-fetch';
 
 let defaultClient = theblockchainapi.ApiClient.instance;
 
@@ -24,5 +25,12 @@ const result = await apiInstance.solanaGetNFTsBelongingToWallet(network, publicK
   return error;
 });
 
-//console.log("NFTs: ", result);
-fs.writeFileSync(`./nftDatasets/solanaAssets-${publicKey}.json`, JSON.stringify(result.nfts_metadata));
+let nftData = result.nfts_metadata;
+
+for (let index = 0; index < nftData.length; index++) {console.log(nftData[index].data.uri);
+  const metadataCall = await fetch(nftData[index].data.uri);
+  const metadataCallData = await metadataCall.json();
+  nftData[index].metaResult = metadataCallData;
+}
+
+fs.writeFileSync(`./nftDatasets/solanaAssetsTheBlockchain-${publicKey}.json`, JSON.stringify(nftData));

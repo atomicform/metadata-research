@@ -17,6 +17,7 @@
     "flatted": "^3.2.5",
     "json2csv": "^5.0.6",
     "magic-bytes.js": "^1.0.6",
+    "node-fetch": "^3.2.3",
     "opensea-js": "^2.0.1",
     "theblockchainapi": "^1.0.936",
     "tslib": "^2.3.1",
