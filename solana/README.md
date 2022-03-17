@@ -6,12 +6,14 @@ We are currently evaluationg two options to retrieve Solana NFT metadata. The Me
 
 ### Resources
 
-- API documentation: https://docs.theblockchainapi.com/
-- Sample code: https://github.com/BL0CK-X/blockchain-api/blob/main/examples/solana-wallet/get-wallet-nfts/js_example.js
-- API keys: https://dashboard.blockchainapi.com/#api-keys
-- Billing/Pricing: https://dashboard.blockchainapi.com/#resources
+- API documentation: <https://docs.theblockchainapi.com/>
+- Sample code: <https://github.com/BL0CK-X/blockchain-api/blob/main/examples/solana-wallet/get-wallet-nfts/js_example.js>
+- API keys: <https://dashboard.blockchainapi.com/#api-keys>
+- Billing/Pricing: <https://dashboard.blockchainapi.com/#resources>
 
-### Setup
+### Setup and Run
+
+`npm install theblockchainapi`
 
 An API pair is required for The Blockchain API and Solana. Add a .env file with the following syntax
 
@@ -19,21 +21,53 @@ An API pair is required for The Blockchain API and Solana. Add a .env file with 
 SOLANA_KEY_ID=""
 SOLANA_KEY_SECRET=""
 ```
+To run: `node solana/solana_tba.js`.
 
-The API has credit limits before requiring a higher tier of paid service. To test the metadata pull without using the API, remove the following.
+The data can be pulled into a file using `node solana/solana_tba.js`.
+
+### Evaluation
+
+Pros
+- Implementation was fairly easy.
+- From the website: "Our mission is to make it easy to access layer 1 protocols (e.g., Solana, Ethereum, Bitcoin, etc.), layer 2 protocols (e.g., Arbitrum, Harmony, etc.), and DeFi protocols (e.g., Uniswap, Aave, Compound, etc.) with a simple API. We're starting first with a Solana API."
+  - Could be used for multiple chains?
+
+Cons
+- The API dashboard can only be logged into using google. This makes sharing the dashboard among a company very difficult. However, the API keys can still be shared.
+
+Not sure if a pro or con
+- The API requires a user/key pair.
+
+## Metaplex API
+
+There was no clear way to use the Metaplex SDK to query wallet NFTs.
+
+## nfteyez sol-rayz
+
+### Resources
+
+- Article that lead me to this API: <https://avinashvazratkar446022.medium.com/how-to-fetch-all-collectibles-from-phantom-wallet-connected-to-solana-network-62dffb70f26b>
+- RepoHub: <https://reposhub.com/javascript/misc/NftEyez-sol-rayz.html#articleHeader2>
+- Github: <https://github.com/NftEyez/sol-rayz>
+- Example of package in use: https://nfteyez.global/
+
+### Setup and Run
 
 ```
-const result = await apiInstance.solanaGetNFTsBelongingToWallet(network, publicKey).then((data) => {
-  console.log('API called successfully.');
-  return data;
-}, (error) => {
-  console.error(error);
-  return error;
-});
+npm i @solana/web3.js
+npm i @nfteyez/sol-rayz
 ```
 
-Replace with the following.
+To run: `node solana/solana_nfteyez.js`.
 
-```
-const result = JSON.parse('{"nfts_metadata":[{"data":{"creators":["HJChRfbn2h7a2XK7WtUMLj467iMUJ21EhzNZ5QU82saN","BXEFHxpS1h2nzGp26itisNiM4yMeM5wxrnjAqPPmnXa3"],"name":"Soul 91","share":[0,100],"symbol":"","uri":"https://arweave.net/gaRZWHVLv8GP3DeiDOY3fm_zkrkzOBJ0vmee-Ng9r4k","verified":[1,0]},"is_mutable":true,"mint":"GYnqJEK9qCLQPqt2znXm6MS3sMGcfb1XLfFRUbh9uVnM","primary_sale_happened":true,"update_authority":"CzFuahYZf5rsakiNiLSUXTwuXHQFCdx7hwRMWBem3hNN","explorer_url":"https://explorer.solana.com/address/GYnqJEK9qCLQPqt2znXm6MS3sMGcfb1XLfFRUbh9uVnM"},{"data":{"creators":["G9zy4jGj6ozT3qk9F1qbsAtQ5qvbbF4KwX1CmQRbLmhd","GcrjZXzmNDyGDt646hy4ziWNa5ziGAMNdXGdQcDtnBaV"],"name":"Tower Community NFT","share":[0,100],"symbol":"TWRCMMNTY","uri":"https://arweave.net/uJzgnieykvHvJNe7r4Lxj2PO2K-a_qzqca1O2wmTBbo","verified":[1,0]},"is_mutable":false,"mint":"5xsYQ1dughTssMr4T9FbcetFU2eUDoEocNr8XUqNTyGx","primary_sale_happened":true,"update_authority":"G9zy4jGj6ozT3qk9F1qbsAtQ5qvbbF4KwX1CmQRbLmhd","explorer_url":"https://explorer.solana.com/address/5xsYQ1dughTssMr4T9FbcetFU2eUDoEocNr8XUqNTyGx"},{"data":{"creators":["2hJVCiRvuWhjbuHrrMXREekuQ7sQYNsfRbM62Ugn9Uzz","ULf4AWYjQ7iD81dYsFTNryyJvXX3yNeCN72KsbKDu3W"],"name":"Toolkit","share":[0,100],"symbol":"","uri":"https://arweave.net/VficjCTmB_BvRSaR3_UsyD49zV-eLUMI4gZdoyn_Fyc","verified":[1,0]},"is_mutable":true,"mint":"C8TzXFXd8NvqMn3xb7YMs6xrbv4rmqZVbxhLqm3Uee2T","primary_sale_happened":true,"update_authority":"GLR4Vde7aD4DPG8gUnDMXpGEAxgTXFnK1x44nd5m9br9","explorer_url":"https://explorer.solana.com/address/C8TzXFXd8NvqMn3xb7YMs6xrbv4rmqZVbxhLqm3Uee2T"},{"data":{"creators":["5GUrnehPCrVeAeo29sgH3KbPhTvEDaH8HJqonYUceVM","ULf4AWYjQ7iD81dYsFTNryyJvXX3yNeCN72KsbKDu3W"],"name":"SolDad #1715","share":[0,100],"symbol":"SOLDAD","uri":"https://arweave.net/PqLSdcyizhUTrNHzVMA8JD86CsqUPZWpZYcuPq3KR74","verified":[1,0]},"is_mutable":true,"mint":"GXMeGFDnAwf5uC4uwjrBJAdb3wsHBd8KMc7FmnuDy6Td","primary_sale_happened":true,"update_authority":"9bJNTytrMHPps58zH5tk3jsaMbQjD1W13ri7D431QcJt","explorer_url":"https://explorer.solana.com/address/GXMeGFDnAwf5uC4uwjrBJAdb3wsHBd8KMc7FmnuDy6Td"},{"data":{"creators":["4dMFGXww53WLQggkoL13WT4Q2KGPQZAXMea3nFDc9c8Q","FhdcmMy4T8NaVqEqw5UyMvMSRVLRfXcpifkeFydwG1ue"],"name":"HighStakeRollers #5503","share":[0,100],"symbol":"","uri":"https://arweave.net/4lLNyS8QF6ifYKuwxr1KjaX078zmHhR-vTrE1jFHDF8","verified":[1,0]},"is_mutable":true,"mint":"2dav6k3iSJVxpyvcvU1ZUxdn9Z15gd3HxGo8qN7N2MTT","primary_sale_happened":true,"update_authority":"FhdcmMy4T8NaVqEqw5UyMvMSRVLRfXcpifkeFydwG1ue","explorer_url":"https://explorer.solana.com/address/2dav6k3iSJVxpyvcvU1ZUxdn9Z15gd3HxGo8qN7N2MTT"},{"data":{"creators":["Eng8FDVHPnAWfXpf14agbdu6Q8eSLHnvcLoB44Ua4jTc","BXEFHxpS1h2nzGp26itisNiM4yMeM5wxrnjAqPPmnXa3"],"name":"Soul 2387","share":[0,100],"symbol":"","uri":"https://arweave.net/o5MwGZ3K79qlGokoInBpgXwhUELZCV4QC-8Ttbbt1lI","verified":[1,0]},"is_mutable":true,"mint":"3mVEER8G8uaEMGi1AzH3SmiY8nTy7hwqYeBStbx5jn5K","primary_sale_happened":true,"update_authority":"CzFuahYZf5rsakiNiLSUXTwuXHQFCdx7hwRMWBem3hNN","explorer_url":"https://explorer.solana.com/address/3mVEER8G8uaEMGi1AzH3SmiY8nTy7hwqYeBStbx5jn5K"},{"data":{"creators":["64eiSEPv2KRKNkPAX6d4BZQ3b12PcFqZP2yPoNAZw9po","yeT3ik5jX5RuK8JF8P3RRHrr9g6ox6RMWbRMh3r9FxQ"],"name":"Baby Yetis #912","share":[100,0],"symbol":"","uri":"https://arweave.net/u9XraYnXCGN9MPw2BHkZP9YRPPp0JFsB9HtVyHCvdCU","verified":[0,1]},"is_mutable":true,"mint":"51Dd17AtVVsp3Dv9VMJEJ5UKLSfrBWHyFHN4n3wZqHz4","primary_sale_happened":false,"update_authority":"yeT3ik5jX5RuK8JF8P3RRHrr9g6ox6RMWbRMh3r9FxQ","explorer_url":"https://explorer.solana.com/address/51Dd17AtVVsp3Dv9VMJEJ5UKLSfrBWHyFHN4n3wZqHz4"},{"data":{"creators":["CeYRttSvWZ6SP4QWK4CxVc4GbWtC7eJmvgqv86zLnGQ8","9uJRearTP2fdsFp3Sa4w8MGXoqci59SBErGZqJXaqPqa","DUbboetUV5A3H9WUHk6d2mHg4hyX1hEnAfvjEMcSvoHb","C5kegRb9XMcEEp19mUdzLKrLqmRbv98kY8YUqvMWq1Bo","BnZNCQz3Zqb1o4nrjW3zNGbWdKubSTw7mAU5NGYouJMF"],"name":"Sol Slug - 01884","share":[0,30,30,30,10],"symbol":"SLUG","uri":"https://arweave.net/_diztqP2D1oyiyhFDtLIfed8ODBornIjeOP98Om9JCY","verified":[1,1,1,1,1]},"is_mutable":true,"mint":"BMQniBDV3Km4AbWK3fDaiRMaiS4NBb1TLHtyLnWbY2ua","primary_sale_happened":true,"update_authority":"BnZNCQz3Zqb1o4nrjW3zNGbWdKubSTw7mAU5NGYouJMF","explorer_url":"https://explorer.solana.com/address/BMQniBDV3Km4AbWK3fDaiRMaiS4NBb1TLHtyLnWbY2ua"},{"data":{"creators":["5MNyU8o4eKnT1oz4u3ckKMBH7pr84MpVf9ZTsBjt4hhS","MpuqgieWmABThXfBPzPbwrCyx6MZrVTpBFBK8BzBvYh","EozHkXipaBVkXS5ciqvN5CUwWV5bmgLuHp1oeXdPVCvY","4ZNYVD4xXVEdSSQHMgjAA4gYn5Y68x5xTJqeuqTCtgGF"],"name":"SOLYETIS #5433","share":[0,50,25,25],"symbol":"","uri":"https://arweave.net/g-SpW71GOuIqvxIzQvH_8ITKiXYuaZTCDbjArcs01LI","verified":[1,0,0,0]},"is_mutable":true,"mint":"E8TZyFJR2xcfZSWAQ7mEarhbE1rAJ5hZ4zVAcemKT3j8","primary_sale_happened":true,"update_authority":"yeT3ik5jX5RuK8JF8P3RRHrr9g6ox6RMWbRMh3r9FxQ","explorer_url":"https://explorer.solana.com/address/E8TZyFJR2xcfZSWAQ7mEarhbE1rAJ5hZ4zVAcemKT3j8"},{"data":{"creators":["Eng8FDVHPnAWfXpf14agbdu6Q8eSLHnvcLoB44Ua4jTc","BXEFHxpS1h2nzGp26itisNiM4yMeM5wxrnjAqPPmnXa3"],"name":"Soul 2359","share":[0,100],"symbol":"","uri":"https://arweave.net/t3CGMxGUwtjB-Zl6qGkblzZs6CLB-zLCUEP_oco5CEs","verified":[1,0]},"is_mutable":true,"mint":"Afx3bYC8UjKStEe9RWsax1RNG8rbTha4oZ3TZV1CFk8K","primary_sale_happened":true,"update_authority":"CzFuahYZf5rsakiNiLSUXTwuXHQFCdx7hwRMWBem3hNN","explorer_url":"https://explorer.solana.com/address/Afx3bYC8UjKStEe9RWsax1RNG8rbTha4oZ3TZV1CFk8K"},{"data":{"creators":["HuAiZg55P557gdjr5jkq79YdMe9sbdHuPj5UN21XuSyK","5FzddvKbxE54KEg2WoeNiGWJYAUBabKVFg2MVCSacWiJ"],"name":"Vox Punks Club #461","share":[0,100],"symbol":"","uri":"https://arweave.net/PkWfn1JAomvlItC57Fv1FchcJ4mMNUOQsY6HG_yF6XA","verified":[1,1]},"is_mutable":true,"mint":"PFmjRgMTZYvvM8k6rWGHKemhkUFciYbB8ybEyJ3rqHy","primary_sale_happened":true,"update_authority":"5FzddvKbxE54KEg2WoeNiGWJYAUBabKVFg2MVCSacWiJ","explorer_url":"https://explorer.solana.com/address/PFmjRgMTZYvvM8k6rWGHKemhkUFciYbB8ybEyJ3rqHy"},{"data":{"creators":["CUvafyJ61o578PiuLV6CmPzTdP13SPwbVAzBWDC2cMB9","H9eiJ9Sa6gZVytbMU4JUwzyLvkeBUmL5oguDhx3CUfEE"],"name":"Solana Birbs #4288","share":[0,100],"symbol":"","uri":"https://arweave.net/QSDWLZGhWJXFrgZACuzsJc61aNHgiYoRXTUMzppMGTU","verified":[1,0]},"is_mutable":true,"mint":"7pFfMc3WougD7vntz3cFpfU2XLhWivWwP2czUzFvBcsz","primary_sale_happened":true,"update_authority":"H9eiJ9Sa6gZVytbMU4JUwzyLvkeBUmL5oguDhx3CUfEE","explorer_url":"https://explorer.solana.com/address/7pFfMc3WougD7vntz3cFpfU2XLhWivWwP2czUzFvBcsz"},{"data":{"creators":["Eng8FDVHPnAWfXpf14agbdu6Q8eSLHnvcLoB44Ua4jTc","BXEFHxpS1h2nzGp26itisNiM4yMeM5wxrnjAqPPmnXa3"],"name":"Soul 2386","share":[0,100],"symbol":"","uri":"https://arweave.net/-WHYcp7VnEsZRiIuXjwfU3_u2oLAeBtfD5Hx_QnBEhA","verified":[1,0]},"is_mutable":true,"mint":"8aaSoLHdcBDRBSDjPJoTwBZkCYj9AEDJcM3atPYewMq1","primary_sale_happened":true,"update_authority":"CzFuahYZf5rsakiNiLSUXTwuXHQFCdx7hwRMWBem3hNN","explorer_url":"https://explorer.solana.com/address/8aaSoLHdcBDRBSDjPJoTwBZkCYj9AEDJcM3atPYewMq1"},{"data":{"creators":["HuAiZg55P557gdjr5jkq79YdMe9sbdHuPj5UN21XuSyK","5FzddvKbxE54KEg2WoeNiGWJYAUBabKVFg2MVCSacWiJ"],"name":"Vox Punks Club #966","share":[0,100],"symbol":"","uri":"https://arweave.net/_Y8tETU3FbAFZSM1wXNeWPweWwrW9K6oSF1SYi_bH9A","verified":[1,1]},"is_mutable":true,"mint":"EEr5yQpNXf7Bru6Rt5podx56HGW9CEehXqgRGh2wa71w","primary_sale_happened":true,"update_authority":"5FzddvKbxE54KEg2WoeNiGWJYAUBabKVFg2MVCSacWiJ","explorer_url":"https://explorer.solana.com/address/EEr5yQpNXf7Bru6Rt5podx56HGW9CEehXqgRGh2wa71w"}]}');
-```
+### Evaluation
+
+Pros
+- Implementation was fairly easy.
+- No paid tier. Appears to be free.
+
+Cons
+- I do not see SLA info but this may be a simple code package that will work with the Solana as long as no surprise changes are made. It appears to be used and maintained.
+
+Not sure if a pro or con
+- There are not credentials. The API is open.

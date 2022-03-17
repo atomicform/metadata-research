@@ -27,7 +27,7 @@ const result = await apiInstance.solanaGetNFTsBelongingToWallet(network, publicK
 
 let nftData = result.nfts_metadata;
 
-for (let index = 0; index < nftData.length; index++) {console.log(nftData[index].data.uri);
+for (let index = 0; index < nftData.length; index++) {
   const metadataCall = await fetch(nftData[index].data.uri);
   const metadataCallData = await metadataCall.json();
   nftData[index].metaResult = metadataCallData;
