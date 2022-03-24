@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nfteyez/sol-rayz": "^0.10.2",
+    "@solana/web3.js": "^1.36.0",
     "@zoralabs/nft-metadata": "^1.2.3",
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
@@ -17,7 +19,9 @@
     "flatted": "^3.2.5",
     "json2csv": "^5.0.6",
     "magic-bytes.js": "^1.0.6",
+    "node-fetch": "^3.2.3",
     "opensea-js": "^2.0.1",
+    "theblockchainapi": "^1.0.936",
     "tslib": "^2.3.1",
     "web3": "^1.7.0"
   }
