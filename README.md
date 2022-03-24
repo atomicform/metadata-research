@@ -20,7 +20,7 @@ OPENSEA_KEY=""
 ALCHEMY_KEY=""
 ```
 
-Solana requires an API pair to be placed in a .env file with the following syntax
+An API pair is required for The Blockchain API and Solana. AF has paid credentials in 1password and free accounts can be acquired [here](https://dashboard.blockchainapi.com/#api-keys). Add a .env file with the following syntax
 
 ```
 SOLANA_KEY_ID=""

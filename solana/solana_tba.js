@@ -5,7 +5,8 @@ import fetch from 'node-fetch';
 
 let defaultClient = theblockchainapi.ApiClient.instance;
 
-// Get a free API Key Pair here: https://dashboard.blockchainapi.com/api-keys
+// Check 1password for a paid API Key Pair.
+// Or get a free API Key Pair here: https://dashboard.blockchainapi.com/api-keys.
 
 let APIKeyID = defaultClient.authentications['APIKeyID'];
 APIKeyID.apiKey = process.env.SOLANA_KEY_ID;

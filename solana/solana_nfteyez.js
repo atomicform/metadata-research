@@ -6,7 +6,7 @@ import fs from "fs";
 import fetch from 'node-fetch';
 
 try {
-  const address = "AdJUUJ5CsUbHfvQ25bRH87MQcTFhy5CmngdRuwPiryJw";
+  const address = "2fsy96RzSDJaBXKxep8iKYqLFy4BS7pXsD1Kyr7BfZXE";
   // or use Solana Domain
   //const address = "NftEyez.sol";
 
@@ -16,7 +16,7 @@ try {
 
   const nftArray = await getParsedNftAccountsByOwner({
     publicAddress,
-  });
+  });console.log(nftArray);
 
   let nftData = nftArray;
 

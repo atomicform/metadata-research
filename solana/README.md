@@ -1,21 +1,21 @@
 # Solana API Options and Evaluation
 
-We are currently evaluationg two options to retrieve Solana NFT metadata. The Metaplex API and The Blockchain API appear to be capable of performing the same tasks. These examples and evaluation will shed light on the better of the two.
+We are currently evaluating two options to retrieve Solana NFT metadata. These examples and evaluation will shed light on the options.
 
 ## The Blockchain API
 
 ### Resources
 
-- API documentation: <https://docs.theblockchainapi.com/>
-- Sample code: <https://github.com/BL0CK-X/blockchain-api/blob/main/examples/solana-wallet/get-wallet-nfts/js_example.js>
-- API keys: <https://dashboard.blockchainapi.com/#api-keys>
-- Billing/Pricing: <https://dashboard.blockchainapi.com/#resources>
+- [API documentation](https://docs.theblockchainapi.com/)
+- [Sample code](https://github.com/BL0CK-X/blockchain-api/blob/main/examples/solana-wallet/get-wallet-nfts/js_example.js)
+- [API keys](https://dashboard.blockchainapi.com/#api-keys) (check 1password)
+- [Billing/Pricing](https://dashboard.blockchainapi.com/#resources)
 
 ### Setup and Run
 
 `npm install theblockchainapi`
 
-An API pair is required for The Blockchain API and Solana. Add a .env file with the following syntax
+An API pair is required for The Blockchain API and Solana. AF has paid credentials in 1password and free accounts can be acquired [here](https://dashboard.blockchainapi.com/#api-keys). Add a .env file with the following syntax
 
 ```
 SOLANA_KEY_ID=""
@@ -46,10 +46,10 @@ There was no clear way to use the Metaplex SDK to query wallet NFTs.
 
 ### Resources
 
-- Article that lead me to this API: <https://avinashvazratkar446022.medium.com/how-to-fetch-all-collectibles-from-phantom-wallet-connected-to-solana-network-62dffb70f26b>
-- RepoHub: <https://reposhub.com/javascript/misc/NftEyez-sol-rayz.html#articleHeader2>
-- Github: <https://github.com/NftEyez/sol-rayz>
-- Example of package in use: https://nfteyez.global/
+- [Article that lead me to this API](https://avinashvazratkar446022.medium.com/how-to-fetch-all-collectibles-from-phantom-wallet-connected-to-solana-network-62dffb70f26b)
+- [RepoHub](https://reposhub.com/javascript/misc/NftEyez-sol-rayz.html#articleHeader2)
+- [Github](https://github.com/NftEyez/sol-rayz)
+- [Example of package in use](https://nfteyez.global/)
 
 ### Setup and Run
 
@@ -70,4 +70,4 @@ Cons
 - I do not see SLA info but this may be a simple code package that will work with the Solana as long as no surprise changes are made. It appears to be used and maintained.
 
 Not sure if a pro or con
-- There are not credentials. The API is open.
+- There are no credentials. The API is open.
