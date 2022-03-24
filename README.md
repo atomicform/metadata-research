@@ -39,8 +39,10 @@ To do this, I used [json2csv](https://github.com/zemirco/json2csv)'s CLI tool. T
 `npm install -g json2csv`
 
 Then I executed the following from the command line
-`json2csv -i <path to input json file> -o <path to output csv file> --flatten-objects --include-empty-rows`
+`json2csv -i <path to input json file> -o <path to output csv file> --flatten-objects --include-empty-rows --no-streaming`
 
 Note that this will flatten all objects in the input JSON file and include empty rows, this can result in a very wide table.
+
+The no streaming flag makes use of memory to ensure all fields are captured and recorded in the resulting CSV.
 
 If you want to specify which fields to include in the output CSV, use the `--fields` option
