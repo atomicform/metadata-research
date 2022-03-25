@@ -1,10 +1,10 @@
 curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/ft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c' \
-  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  -u KEYID:KEYPASS \
   --header 'x-chain-id: 8217'
   Response: {"address":"0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c","decimals":0,"name":"KISS ROOMER","symbol":"KROOM","totalSupply":"0x3f4"}
 
 curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c/0x3F5' \
-  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  -u KEYID:KEYPASS \
   --header 'x-chain-id: 8217'
   Response: {"uri":"https://gaytway.mypinata.cloud/ipfs/QmazMh4nQiUxtQb7GJJxAYgeBDstEXpTSqhbsQJFX43chH/1548.json","owner":"0xcc467df87d2c601e249f66d2d77c282a431d4a2a"}
   
