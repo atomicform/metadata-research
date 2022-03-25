@@ -20,5 +20,6 @@ curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x
   curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c/#ID' \
   -u KEYID:KEYPASS \
   --header 'x-chain-id: 8217'
-
+  Note: Must convert #ID to the NFT to Hexcode.
+  
   6). Metadata isn't always IPFS link, can be Amazon, mypinata.cloud, etc...
