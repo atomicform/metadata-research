@@ -5,7 +5,7 @@ https://console.klaytnapi.com.
 
 3). Authentication via Query can be performed like this:
 curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x898f2afc07924f5a4f9612449e4c4f8eca527515' \
-  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  -u KEYID:KEYPASS \
   --header 'x-chain-id: 8217'
     Resp. {"address":"0x898f2afc07924f5a4f9612449e4c4f8eca527515","name":"MineralNFT","symbol":"FSI","totalSupply":"0x1109"}
 
@@ -13,12 +13,12 @@ curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x
   
   4). NFT contract inquiry
   curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c' \
-  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  -u KEYID:KEYPASS \
   --header 'x-chain-id: 8217' 
 
   5). NFT Metadata Lookup
   curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c/#ID' \
-  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  -u KEYID:KEYPASS \
   --header 'x-chain-id: 8217'
 
   6). Metadata isn't always IPFS link, can be Amazon, mypinata.cloud, etc...
