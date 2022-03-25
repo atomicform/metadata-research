@@ -1,0 +1,40 @@
+curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/ft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c' \
+  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  --header 'x-chain-id: 8217'
+  Response: {"address":"0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c","decimals":0,"name":"KISS ROOMER","symbol":"KROOM","totalSupply":"0x3f4"}
+
+curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c/0x3F5' \
+  -u KASK6GY3CJI0HLGUY4BNF97Z:KQGNZOX4RyR7Fu3rVfMrFnyoGPHi5_4mRA08bUod \
+  --header 'x-chain-id: 8217'
+  Response: {"uri":"https://gaytway.mypinata.cloud/ipfs/QmazMh4nQiUxtQb7GJJxAYgeBDstEXpTSqhbsQJFX43chH/1548.json","owner":"0xcc467df87d2c601e249f66d2d77c282a431d4a2a"}
+  
+  {
+  "name": "KISS ROOMER #1548",
+  "description": "우리 사랑하자 We, Love  ❤️\n사랑은 내면에 존재해요 널리 알리거나 밖으로 보여줄 필요 없어요\n루머 안에 있는 사랑을 믿어보세요.\n\nROOMER CLUB의 KISS ROOMER는 모든 사랑을 이야기 합니다.\n\nLet's love. We, Love ❤️\nLove exists inside you. You don't have to spread it out or show it to the public.\nBelieve in the love in ROOMER.\n\nKISS ROOMER of ROOMER CLUB talks about all the love.",
+  "image": "https://gaytway.mypinata.cloud/ipfs/bafybeicuskawd24yno4npxjpsk7hfjp5nkdqmb4cmjmjlbyljgobd2zrxq/1548.png",
+  "dna": "b59ea16b0b7c9878ab06e1d7a6e87e53a01c3edc",
+  "edition": 1548,
+  "date": 1645201452807,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Heart Red"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Hot Bikini Red Dot"
+    },
+    {
+      "trait_type": "Face",
+      "value": "Blank Face Classic"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wave Classic"
+    },
+    {
+      "trait_type": "Accessory",
+      "value": "Hairclip Cat"
+    }
+  ]
+}
