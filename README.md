@@ -1,35 +1,60 @@
-# NFT Metadata Exploration
+# Klaytn API Options and Evaluation
 
-This repo contains code that is being used in a research project to better understand NFT Metadata Diversity. It includes scripts for retrieving NFT metadata from various providers and APIs to get a better understanding of the current state of NFT metadata.
+We are currently evaluating two options to retrieve Klaytn NFT metadata. These examples and evaluation will shed light on the options.
 
-Today, there's variability in how and where NFT metadata is structured and stored. This poses a challenge in creating solutions for NFT aggregation, display and exploration.
+## Klaytn API
 
-By better understanding the current state, we can better support the NFT ecosystem as it is and hopefully encourage standardization in the future.
+### Resources
 
-## Providers
-There is a folder for each NFT metadata provider that has been tested so far
-- Alchemy
-- OpenSea
-- Zora
+- [DEV Documentation](https://www.klaytn.com/developers)
+- [Klaytn Documentation](https://docs.klaytn.com)
+- [API keys](https://dashboard.blockchainapi.com/#api-keys) (check 1password)
+- [SDK w/caver-js] (https://medium.com/klaytn/common-architecture-of-caver-a714224a0047)
+- [Klaystagram Tutorial](https://docs.klaytn.com/dapp/tutorials/klaystagram)
 
-OpenSea and Alchemy require API keys to be placed in a .env file with the following syntax
+### Setup and Run
+
+You will need to get KLAY into a wallet, which you can obtain at: https://docs.klaytn.com/dapp/developer-tools/klaytn-wallet#how-to-receive-baobab-testnet-klay. 
+$ npm install caver-js
+
+An API pair is required for The Blockchain API and Klaytn. 
 
 ```
-OPENSEA_KEY=""
-ALCHEMY_KEY=""
+KLAYTN_KEY_ID=""
+KLAYTN_KEY_SECRET=""
 ```
 
-This data isn't being persisted into a database until we have a better understanding of the data structure we'd like to persist, these scripts are currently writing the API results to the nftDatasets directory.
+You need to create a Keyring for transaction, different options exist but to make a SingleKeyring you can do so by the following:
 
-## Generating CSV
-The metadata analysis was done primarily in spreadsheets. To that end, I had to convert the JSON payloads the API's were returning and converting them to CSV.
+$ touch keyring.js
+$ code keyring.js
 
-To do this, I used [json2csv](https://github.com/zemirco/json2csv)'s CLI tool. To do this, you'll need to install it globally.
-`npm install -g json2csv`
+// test.js
+const Caver = require('caver-js')
+const caver = new Caver('https://api.baobab.klaytn.net:8651/')
 
-Then I executed the following from the command line
-`json2csv -i <path to input json file> -o <path to output csv file> --flatten-objects --include-empty-rows`
+async function testFunction() {
+	const keyring = caver.wallet.keyring.generate()
+	console.log(keyring)
+}
 
-Note that this will flatten all objects in the input JSON file and include empty rows, this can result in a very wide table.
+testFunction()
 
-If you want to specify which fields to include in the output CSV, use the `--fields` option
+$ node test.js
+
+CONNECT TO IPFS via CAVER
+If you wish to connect to a local node or remote IPFS node, you can do so by running:
+caver.ipfs.setIPFSNode('localhost', 5001, false)
+
+IPFS: Get file address by IPFS hash as Buffer
+caver.ipfs.get('CID-HASH-HERE')
+
+
+### Evaluation
+
+Pros
+- The API requires a user/key pair, making it easy to make queries to the API.
+
+Cons
+- Content in foreign language and need to convert all the time
+- Not very straight forward on how to query NFT contracts or which API's to use
