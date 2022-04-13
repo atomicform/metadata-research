@@ -25,7 +25,7 @@ KLAYTN_KEY_ID=""
 KLAYTN_KEY_SECRET=""
 ```
 ### Interesting Items Klaytn does
-KIP-17, KIP-37, and KIP-7 are the different NFT specs offered on Klaytn. More on other things found interesting about Klaytn can be found in the Google Docs as well.
+KIP-17, KIP-37, and KIP-7 are the different NFT specs offered on Klaytn. More on other things found interesting about Klaytn can be found in the Google Docs as well, seen here: https://docs.google.com/document/d/1eTSmgUxIzRgQZ2TiB5MotxiJ8NdjRGzgOMt8ms3b-dg/edit?usp=sharing.
 
 ## KIP-17 
 This spec is designed to help manage contracts and tokens for BApp development. This is Klaytn's own version of a Non-Fungible Token that has essentially the same API endpoints as the other standards. Another interesting aspect is aliases, instead of using a contract hash, can just provide an alias given to a contract.
