@@ -18,7 +18,7 @@ You will need to get KLAY into a wallet, which you can obtain at: https://docs.k
 
 $ npm install caver-js
 
-An API pair is required for The Blockchain API and Klaytn. 
+An API pair is required for The Blockchain API and Klaytn (See 1Password > Developers > Klaytn: API Key)
 
 ```
 KLAYTN_KEY_ID=""
@@ -27,7 +27,7 @@ KLAYTN_KEY_SECRET=""
 ### Interesting Items Klaytn does
 KIP-17, KIP-37 (Mostly from ERC-1155), and KIP-7 are the different NFT specs offered on Klaytn that are based on the ERC-721 and . More on other things found interesting about Klaytn can be found in the Google Docs as well, seen here: https://docs.google.com/document/d/1eTSmgUxIzRgQZ2TiB5MotxiJ8NdjRGzgOMt8ms3b-dg/edit?usp=sharing.
 
-## KIP-17 
+## KIP-17
 This spec is designed to help manage contracts and tokens for BApp development and heavily based on ERC-721. This is Klaytn's own version of a Non-Fungible Token that has essentially the same API endpoints as the other standards. Another interesting aspect is aliases, instead of using a contract hash, can just provide an alias given to a contract.
 
 Additionally, one cool aspect is, you can pay transaction (gas) fee's using the KAS Global FeePayer, User FeePayer, KAS Global FeePayer Account + User FeePayer Account, and/or the standard transaction fee right from the users account. "... by using Global Fee Payer, you don’t have to worry about all the possible issues related to Fee management. You’ll be also charged the amount of Fee you used later, which means KAS pays your Fee first with KLAY at first and later on continues to charge your fee.". The FeePayer has parts like a GSN (Gas Station Network), where it helps you pay for transactions in KLAY. For more on delegation, can visit: https://docs.klaytn.com/klaytn/design/transactions#fee-delegation. 
@@ -43,7 +43,9 @@ To freely trade, you'll need Kaikas and MetaMask browser extentions. You'll want
 
 ## Keyring, in Code!
 
-You can have multiple keys to an account and roles or a Single Keyring, like seen below...
+You can have multiple keys to an account and roles or a Single Keyring. From their docs:
+
+> "Keyring can be classified into three types depending on the type of key being stored: [SingleKeyring](https://github.com/dapp/sdk/caver-js/api-references/caver.wallet/keyring#singlekeyring) to store one address and one private key, [MultipleKeyring](https://github.com/dapp/sdk/caver-js/api-references/caver.wallet/keyring#multiplekeyring) to store one address and multiple private keys, and [RoleBasedKeyring](https://github.com/dapp/sdk/caver-js/api-references/caver.wallet/keyring#rolebasedkeyring) to store one address and one or more private keys for each role."
 
 You need to create a Keyring for transactions, different options exist but to make a SingleKeyring you can do so by the following:
 
