@@ -1,0 +1,25 @@
+1). Find/see contracts on Klaytn with a web interface at: https://scope.klaytn.com/nft
+
+2). Created an API Account (in 1-Password) for the KAS Console, seen here: 
+https://console.klaytnapi.com. 
+
+3). Authentication via Query can be performed like this:
+curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x898f2afc07924f5a4f9612449e4c4f8eca527515' \
+  -u KEYID:KEYPASS \
+  --header 'x-chain-id: 8217'
+    Resp. {"address":"0x898f2afc07924f5a4f9612449e4c4f8eca527515","name":"MineralNFT","symbol":"FSI","totalSupply":"0x1109"}
+
+  Note: Must provide the x-chain-id in queries, networks are Baobab (1001) aka Testnet and Cypress (8217) aka Mainnet.
+  
+  4). NFT contract inquiry
+  curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c' \
+  -u KEYID:KEYPASS \
+  --header 'x-chain-id: 8217' 
+
+  5). NFT Metadata Lookup
+  curl --location --request GET 'https://node-api.klaytnapi.com/v1/metadata/nft/0x4456f1caaabc6b2cd8e10b2cfd1c97dbd7acaa0c/#ID' \
+  -u KEYID:KEYPASS \
+  --header 'x-chain-id: 8217'
+  Note: Must convert #ID to the NFT to Hexcode.
+  
+  6). Metadata isn't always IPFS link, can be Amazon, mypinata.cloud, etc...
