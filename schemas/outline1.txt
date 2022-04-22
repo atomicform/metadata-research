@@ -1,0 +1,19 @@
+Attempting to go faster in an outline vs getting caught up in json formatting...
+
+* name: 
+* description: 
+* version: 2
+* thumbnail: CID
+* NFT
+  * type: erc721
+  * editions: 1
+  * standard: 
+    * version: v1.3
+    * uri: CID
+* Legal:
+  * copyright: CCO
+  * IP: public
+  * creators: 
+* Changelong
+  * Timestamp2: CID2
+  * Timestamp1: CID1
